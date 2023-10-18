@@ -12,11 +12,12 @@ const getBorderRadius = (index: number, links: Links[]) => {
     : "500px 500px 500px 500px";
 };
 
-type Links = {
+export interface Links
+  extends Omit<React.HTMLAttributes<HTMLButtonElement>, "onClick"> {
   title: string;
   icon: React.ReactNode;
-  href: string;
-};
+  onClick: (activeIndex: number) => void;
+}
 interface HeaderProps {
   links: Links[];
   activeIndex: number;
@@ -87,13 +88,16 @@ const Header = ({ links, activeIndex = 0, config }: HeaderProps) => {
       )}
     >
       <div className="flex border-[0.5px] bg-black border-neutral-600 rounded-full border-b-0 p-1 overflow-hidden bg-opacity-90">
-        {links.map(({ href, title, icon }, index) => {
+        {links.map(({ onClick, title, icon }, index) => {
           return (
-            <a
+            <button
               key={title}
-              href={href}
+              onClick={() => {
+                onClick(index);
+                handleActiveChange(index);
+              }}
               className={cn(
-                "m-1 sm:m-2 text-sm relative sm:min-w-[70px] min-w-[40px] font-normal flex justify-center ",
+                "m-1 sm:m-2 text-sm relative sm:min-w-[70px] min-w-[40px] font-normal flex justify-center",
                 "rounded-full",
                 activeIndex === index
                   ? "text-white drop-shadow-[rgb(255_255_255_/_57%)_1px_1px_12px]"
@@ -104,7 +108,7 @@ const Header = ({ links, activeIndex = 0, config }: HeaderProps) => {
               <div className="sm:hidden flex items-center justify-center pointer-events-none">
                 {icon}
               </div>
-            </a>
+            </button>
           );
         })}
         <animated.div
