@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "../src";
+import { Analytics } from "@vercel/analytics/react";
 import {
   BookOpenIcon,
   BriefcaseIcon,
@@ -28,6 +29,7 @@ function App() {
   ];
   return (
     <div className="h-full w-full flex flex-col justify-center items-center">
+      <Analytics />
       <div className="text-center">
         <h1 className="font-sans font-extrabold text-3xl mb-1">shiny tab</h1>
         <p className="mb-2 font-sans text-neutral-400">
