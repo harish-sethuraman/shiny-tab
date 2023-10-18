@@ -41,17 +41,17 @@ function App() {
     {
       title: "Home",
       icon: <HomeIcon className="h-6 w-6" />,
-      href: "/",
+      onClick: (index: number) => setIndex(index),
     },
     {
       title: "Blogs",
       icon: <BookOpenIcon className="h-6 w-6" />,
-      href: "/blogs/",
+      onClick: (index: number) => setIndex(index),
     },
     {
       title: "Works",
       icon: <BriefcaseIcon className="h-6 w-6" />,
-      href: "/experience",
+      onClick: (index: number) => setIndex(index),
     },
   ];
   return (
