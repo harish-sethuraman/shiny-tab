@@ -1,3 +1,6 @@
+
+![shiny tab preview](/readme.png)
+
 ## shiny tab
 
 this is a replica of Vercel's [design page](https://vercel.com/design) tabs.
